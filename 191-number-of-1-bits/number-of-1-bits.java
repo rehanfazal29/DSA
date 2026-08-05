@@ -1,16 +1,16 @@
 class Solution {
     public int hammingWeight(int n) {
-        int count = 0;
+        int c = 0;
 
         while (n > 0) {
-            int rem = n % 2;
+            int r= n % 2;
             n = n / 2;
-            if (rem == 1) {
-                count++;
+            if (r == 1) {
+                c++;
             }
         }
 
-        return count;
+        return c;
 
     }
 }
