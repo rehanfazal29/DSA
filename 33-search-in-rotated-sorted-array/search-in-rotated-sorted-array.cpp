@@ -1,0 +1,65 @@
+class Solution {
+public:
+
+    int search(vector<int>& nums, int target) {
+
+      
+        if(nums[0] <= nums[nums.size() - 1]) {
+            return binarySearch(nums, 0, nums.size() - 1, target);
+        }
+
+        int pivotIndex = pivot(nums);
+
+        
+        if(target >= nums[0]) {
+            return binarySearch(nums, 0, pivotIndex - 1, target);
+        }
+
+        
+        else {
+            return binarySearch(nums, pivotIndex, nums.size() - 1, target);
+        }
+    }
+
+
+    int pivot(vector<int>& nums) {
+
+        int start = 0;
+        int end = nums.size() - 1;
+
+        while(start < end) {
+
+            int mid = start + (end - start) / 2;
+
+            if(nums[mid] >= nums[0]) {
+                start = mid + 1;
+            }
+            else {
+                end = mid;
+            }
+        }
+
+        return start;
+    }
+
+
+    int binarySearch(vector<int>& nums, int start, int end, int target) {
+
+        while(start <= end) {
+
+            int mid = start + (end - start) / 2;
+
+            if(nums[mid] == target) {
+                return mid;
+            }
+            else if(nums[mid] > target) {
+                end = mid - 1;
+            }
+            else {
+                start = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+};
