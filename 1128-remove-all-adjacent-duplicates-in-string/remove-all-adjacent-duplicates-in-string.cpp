@@ -2,14 +2,18 @@ class Solution {
 public:
     string removeDuplicates(string s) {
 
-        for(int i=0;i+1<s.length();i++){
-            if(s[i]==s[i+1]){
-                s.erase(s.begin()+i,s.begin()+i+2);
-                i=-1;
+        string ans = "";
+
+        for ( int i=0;i<s.length();i++){
+            if(ans.length()>0 && ans.back()==s[i]){
+                ans.pop_back();
+            }else{
+                ans.push_back(s[i]);
             }
         }
-        return s;
-    
+        return ans;
+
+
 
     }
 };
